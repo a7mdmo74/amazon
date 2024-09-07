@@ -31,16 +31,3 @@ export async function POST(request: Request) {
     );
   }
 }
-
-// export async function DELETE(request: Request) {
-//   try {
-//     const { id } = await request.json();
-//     const result = await removeFromCart(id);
-//     return NextResponse.json(result, { status: 200 });
-//   } catch (error) {
-//     return NextResponse.json(
-//       { error: 'Failed to remove item from cart' },
-//       { status: 500 }
-//     );
-//   }
-// }

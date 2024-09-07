@@ -1,6 +1,8 @@
 'use client';
 import { ProductType } from '@/lib/types';
 import React, { useState } from 'react';
+import { useAuth } from '@clerk/nextjs';
+
 import {
   Card,
   CardContent,
@@ -15,10 +17,11 @@ import Spinner from '../Shared/Spinner';
 import { useCart } from '@/context/CartContext';
 type Props = {
   products: ProductType[];
-  userId: string;
 };
 
-const Products = ({ products, userId }: Props) => {
+const Products = ({ products }: Props) => {
+  const { userId } = useAuth();
+
   const { addToCartContext } = useCart();
 
   const [loadingProductId, setLoadingProductId] = useState<string | null>(null);
