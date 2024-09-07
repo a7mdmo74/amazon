@@ -123,8 +123,8 @@ const Products = ({ products }: Props) => {
                 <Image
                   src={image}
                   alt={title}
-                  layout="fill"
-                  objectFit="cover"
+                  width={500}
+                  height={300}
                   className="rounded-md transition-transform duration-300 ease-in-out group-hover:scale-110"
                 />
               </div>

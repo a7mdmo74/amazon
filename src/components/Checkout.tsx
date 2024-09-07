@@ -7,8 +7,9 @@ import {
   PaymentElement,
 } from '@stripe/react-stripe-js';
 import convertToSubcurrency from '@/lib/convertToSubcurrency';
-
+import { useCart } from '@/context/CartContext';
 const CheckoutPage = ({ amount }: { amount: number }) => {
+  const { clearCart } = useCart();
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState<string>();
@@ -24,9 +25,11 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
       body: JSON.stringify({ amount: convertToSubcurrency(amount) }),
     })
       .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
-  }, [amount]);
-
+      .then((data) => {
+        setClientSecret(data.clientSecret);
+        clearCart();
+      });
+  }, [amount, clearCart]);
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
