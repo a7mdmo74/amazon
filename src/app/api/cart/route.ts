@@ -23,7 +23,7 @@ export async function POST(request: Request) {
       image,
       userId
     );
-    return NextResponse.json(result, { status: 200 });
+    return NextResponse.json(result);
   } catch (error) {
     return NextResponse.json(
       { error: 'Failed to add item to cart' },
@@ -31,3 +31,5 @@ export async function POST(request: Request) {
     );
   }
 }
+
+export const dynamic = 'force-dynamic';
