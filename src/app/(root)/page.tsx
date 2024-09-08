@@ -6,13 +6,12 @@ import Footer from '@/components/Shared/Footer';
 
 export default async function Home() {
   const products = await getProducts();
-  console.log(products);
 
   return (
     <>
       <BottomHeader />
       <Banner />
-      <div className="relative -top-48 z-10">
+      <div className="relative md:-top-48 z-10">
         <Products products={products} />
       </div>
       <Footer />

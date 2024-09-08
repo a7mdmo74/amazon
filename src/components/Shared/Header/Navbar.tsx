@@ -84,7 +84,7 @@ const Navbar = () => {
         {/* fovorite */}
         <Link
           href={'/favorite'}
-          className="text-xs text-gray-100 flex flex-col justify-center cursor-pointer duration-300 h-[70%] relative"
+          className="hidden sm:flex text-xs text-gray-100 flex-col justify-center cursor-pointer duration-300 h-[70%] relative"
         >
           <p>Marked</p>
           <p className="text-white font-bold">& Favorite</p>
