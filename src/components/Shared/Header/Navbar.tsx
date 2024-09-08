@@ -3,7 +3,7 @@ import { useUser } from '@clerk/nextjs';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import cartIcon from '@/images/cartIcon.png';
 import logo from '@/images/logo.png';
 import { ChevronDown, MapPin, SearchIcon } from 'lucide-react';
@@ -18,9 +18,9 @@ import {
 const Navbar = () => {
   const { user } = useUser();
   const { getTotalItems } = useCart();
-  const [totalItems, setTotalItems] = React.useState(0);
+  const [totalItems, setTotalItems] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setTotalItems(getTotalItems());
   }, [getTotalItems]);
 

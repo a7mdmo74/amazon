@@ -17,15 +17,3 @@ model Products {
   category    String
   image    String
 }
-
-model Cart {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  title    String
-  isNew   Boolean
-  oldPrice Float
-  price    Float
-  description   String
-  category    String
-  image    String
-  userId    String
-}
