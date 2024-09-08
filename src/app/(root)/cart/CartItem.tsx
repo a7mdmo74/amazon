@@ -7,7 +7,7 @@ import { useCart } from '@/context/CartContext';
 
 interface CartItemProps {
   item: {
-    id: string;
+    _id: string;
     title: string;
     isNew: boolean;
     oldPrice: number;
@@ -23,15 +23,15 @@ export default function CartItem({ item }: CartItemProps) {
   const [loadingProductId, setLoadingProductId] = useState<string | null>(null);
   const { removeFromCartContext } = useCart();
 
-  const handleDeleteItem = async (id: string) => {
-    setLoadingProductId(id);
+  const handleDeleteItem = async (_id: string) => {
+    setLoadingProductId(_id);
     try {
       setLoadingProductId(null);
-      removeFromCartContext(id);
+      removeFromCartContext(_id);
     } catch (error) {
       console.error('Error removing from cart:', error);
     }
-    console.log('Delete item', id);
+    console.log('Delete item', _id);
   };
 
   return (
@@ -60,9 +60,9 @@ export default function CartItem({ item }: CartItemProps) {
         <Button
           variant="ghost"
           className="text-red-500"
-          onClick={() => handleDeleteItem(item.id)}
+          onClick={() => handleDeleteItem(item._id)}
         >
-          {loadingProductId === item.id ? <Spinner /> : 'Remove'}
+          {loadingProductId === item._id ? <Spinner /> : 'Remove'}
         </Button>
       </div>
     </div>

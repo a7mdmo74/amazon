@@ -50,10 +50,10 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   const addToCartContext = (product: ProductType) => {
     setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === product.id);
+      const existingItem = prevCart.find((item) => item._id === product._id);
       if (existingItem) {
         return prevCart.map((item) =>
-          item.id === product.id
+          item._id === product._id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
@@ -62,10 +62,10 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     });
   };
 
-  const removeFromCartContext = (productId: string) => {
+  const removeFromCartContext = (_id: string) => {
     setCart((prevCart) => {
       const updatedCart = prevCart.reduce((acc, item) => {
-        if (item.id === productId) {
+        if (item._id === _id) {
           if (item.quantity > 1) {
             acc.push({ ...item, quantity: item.quantity - 1 });
           }

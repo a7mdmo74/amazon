@@ -25,7 +25,7 @@ const Products = ({ products }: Props) => {
 
   const [loadingProductId, setLoadingProductId] = useState<string | null>(null);
   const handleAddToCart = async (
-    productId: string,
+    _id: string,
     title: string,
     description: string,
     price: number,
@@ -34,11 +34,11 @@ const Products = ({ products }: Props) => {
     category: string,
     image: string
   ) => {
-    setLoadingProductId(productId);
+    setLoadingProductId(_id);
 
     try {
       addToCartContext({
-        id: productId,
+        _id,
         title,
         description,
         price,
@@ -47,9 +47,11 @@ const Products = ({ products }: Props) => {
         category,
         image,
       });
+      console.log(_id);
+
       toast.success('Product added to cart', {
-        position: 'top-right',
-        autoClose: 5000,
+        position: 'top-left',
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -74,12 +76,12 @@ const Products = ({ products }: Props) => {
   };
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 p-4 sm:p-6">
-      {products.map((product: ProductType, index) => {
+      {products.map((product: ProductType) => {
         const {
           category,
           description,
           image,
-          id,
+          _id,
           isNew,
           oldPrice,
           price,
@@ -88,7 +90,7 @@ const Products = ({ products }: Props) => {
 
         return (
           <Card
-            key={index}
+            key={product._id}
             className="flex flex-col justify-between h-full group"
           >
             <CardHeader>
@@ -132,7 +134,7 @@ const Products = ({ products }: Props) => {
                 onClick={() =>
                   user
                     ? handleAddToCart(
-                        id,
+                        _id,
                         title,
                         description,
                         price,
@@ -152,9 +154,9 @@ const Products = ({ products }: Props) => {
                         theme: 'light',
                       })
                 }
-                disabled={loadingProductId === id}
+                disabled={loadingProductId === _id}
               >
-                {loadingProductId === id ? <Spinner /> : 'Add to cart'}
+                {loadingProductId === _id ? <Spinner /> : 'Add to cart'}
               </Button>
             </CardFooter>
           </Card>
