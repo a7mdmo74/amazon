@@ -47,7 +47,6 @@ const Products = ({ products }: Props) => {
         category,
         image,
       });
-      console.log(_id);
 
       toast.success('Product added to cart', {
         position: 'top-left',

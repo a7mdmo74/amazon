@@ -31,7 +31,6 @@ export default function CartItem({ item }: CartItemProps) {
     } catch (error) {
       console.error('Error removing from cart:', error);
     }
-    console.log('Delete item', _id);
   };
 
   return (
