@@ -23,11 +23,14 @@ export async function POST(request: Request) {
       image,
       userId
     );
-    return NextResponse.json(result, { status: 200 });
+    return NextResponse.json(result);
   } catch (error) {
+    console.error('Error adding item to cart:', error);
     return NextResponse.json(
       { error: 'Failed to add item to cart' },
       { status: 500 }
     );
   }
 }
+
+export const dynamic = 'force-dynamic';
