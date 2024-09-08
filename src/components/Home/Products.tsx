@@ -14,12 +14,14 @@ import Image from 'next/image';
 import { toast } from 'react-toastify';
 import Spinner from '../Shared/Spinner';
 import { useCart } from '@/context/CartContext';
+import { useUser } from '@clerk/nextjs';
 type Props = {
   products: ProductType[];
 };
 
 const Products = ({ products }: Props) => {
   const { addToCartContext } = useCart();
+  const { user } = useUser();
 
   const [loadingProductId, setLoadingProductId] = useState<string | null>(null);
   const handleAddToCart = async (
@@ -36,7 +38,7 @@ const Products = ({ products }: Props) => {
 
     try {
       addToCartContext({
-        id: productId,
+        _id: productId,
         title,
         description,
         price,
@@ -77,14 +79,18 @@ const Products = ({ products }: Props) => {
           category,
           description,
           image,
-          id,
+          _id,
           isNew,
           oldPrice,
           price,
           title,
         } = product;
+
         return (
-          <Card key={id} className="flex flex-col justify-between h-full group">
+          <Card
+            key={_id}
+            className="flex flex-col justify-between h-full group"
+          >
             <CardHeader>
               <div className="flex justify-between items-center">
                 <CardTitle className="text-base sm:text-lg font-semibold line-clamp-2">
@@ -124,20 +130,31 @@ const Products = ({ products }: Props) => {
               <Button
                 className="w-full"
                 onClick={() =>
-                  handleAddToCart(
-                    id,
-                    title,
-                    description,
-                    price,
-                    oldPrice,
-                    isNew,
-                    category,
-                    image
-                  )
+                  user
+                    ? handleAddToCart(
+                        _id,
+                        title,
+                        description,
+                        price,
+                        oldPrice,
+                        isNew,
+                        category,
+                        image
+                      )
+                    : toast.error('Please login to add product to cart', {
+                        position: 'top-right',
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: 'light',
+                      })
                 }
-                disabled={loadingProductId === id}
+                disabled={loadingProductId === _id}
               >
-                {loadingProductId === id ? <Spinner /> : 'Add to cart'}
+                {loadingProductId === _id ? <Spinner /> : 'Add to cart'}
               </Button>
             </CardFooter>
           </Card>
