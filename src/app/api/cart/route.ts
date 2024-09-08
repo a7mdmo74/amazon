@@ -1,4 +1,4 @@
-import { addToCart } from '@/lib/actions';
+import { prisma } from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
@@ -13,17 +13,20 @@ export async function POST(request: Request) {
       title,
       userId,
     } = await request.json();
-    const result = await addToCart(
-      title,
-      isNew,
-      price,
-      oldPrice,
-      description,
-      category,
-      image,
-      userId
-    );
-    return NextResponse.json(result, { status: 200 });
+    const cart = await prisma.cart.create({
+      data: {
+        title,
+        isNew,
+        oldPrice,
+        price,
+        description,
+        category,
+        image,
+        userId,
+      },
+    });
+
+    return NextResponse.json(cart, { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { error: 'Failed to add item to cart' },

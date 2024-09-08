@@ -25,35 +25,35 @@ export async function getProductById(id: string) {
   }
 }
 
-export const addToCart = async (
-  title: string,
-  isNew: boolean,
-  price: number,
-  oldPrice: number,
-  description: string,
-  category: string,
-  image: string,
-  userId: string
-) => {
-  try {
-    const cart = await prisma.cart.create({
-      data: {
-        title,
-        isNew,
-        oldPrice,
-        price,
-        description,
-        category,
-        image,
-        userId,
-      },
-    });
+// export const addToCart = async (
+//   title: string,
+//   isNew: boolean,
+//   price: number,
+//   oldPrice: number,
+//   description: string,
+//   category: string,
+//   image: string,
+//   userId: string
+// ) => {
+//   try {
+//     const cart = await prisma.cart.create({
+//       data: {
+//         title,
+//         isNew,
+//         oldPrice,
+//         price,
+//         description,
+//         category,
+//         image,
+//         userId,
+//       },
+//     });
 
-    return cart;
-  } catch (error) {
-    throw new Error('Failed to add to cart');
-  }
-};
+//     return cart;
+//   } catch (error) {
+//     throw new Error('Failed to add to cart');
+//   }
+// };
 
 // export const removeFromCart = async (id: string) => {
 //   try {

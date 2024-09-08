@@ -38,16 +38,6 @@ const Products = ({ products }: Props) => {
     setLoadingProductId(productId);
 
     try {
-      addToCartContext({
-        id: productId,
-        title,
-        description,
-        price,
-        oldPrice,
-        isNew,
-        category,
-        image,
-      });
       await fetch('/api/cart', {
         method: 'POST',
         headers: {
@@ -65,7 +55,16 @@ const Products = ({ products }: Props) => {
           userId,
         }),
       });
-
+      addToCartContext({
+        id: productId,
+        title,
+        description,
+        price,
+        oldPrice,
+        isNew,
+        category,
+        image,
+      });
       toast.success('Product added to cart', {
         position: 'top-right',
         autoClose: 5000,
