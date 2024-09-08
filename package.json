@@ -24,6 +24,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-toastify": "^10.0.5",
+    "sharp": "^0.33.5",
     "stripe": "^16.10.0",
     "swiper": "^11.1.12",
     "tailwind-merge": "^2.5.2",
