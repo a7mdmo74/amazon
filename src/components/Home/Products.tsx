@@ -1,7 +1,6 @@
 'use client';
 import { ProductType } from '@/lib/types';
 import React, { useState } from 'react';
-import { useAuth } from '@clerk/nextjs';
 
 import {
   Card,
@@ -20,8 +19,6 @@ type Props = {
 };
 
 const Products = ({ products }: Props) => {
-  const { userId } = useAuth();
-
   const { addToCartContext } = useCart();
 
   const [loadingProductId, setLoadingProductId] = useState<string | null>(null);
@@ -38,23 +35,6 @@ const Products = ({ products }: Props) => {
     setLoadingProductId(productId);
 
     try {
-      await fetch('/api/cart', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          productId,
-          title,
-          description,
-          price,
-          oldPrice,
-          isNew,
-          category,
-          image,
-          userId,
-        }),
-      });
       addToCartContext({
         id: productId,
         title,
