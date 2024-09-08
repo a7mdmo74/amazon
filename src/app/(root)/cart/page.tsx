@@ -16,8 +16,8 @@ export default function CartPage() {
       ) : (
         <>
           <div className="space-y-4 max-w-7xl mx-auto">
-            {cart.map((item) => (
-              <CartItem key={item.id} item={item} />
+            {cart.map((item, index) => (
+              <CartItem key={index} item={item} />
             ))}
           </div>
           <div className="mt-6 flex justify-between items-center">

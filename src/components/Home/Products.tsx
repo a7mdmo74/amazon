@@ -38,7 +38,7 @@ const Products = ({ products }: Props) => {
 
     try {
       addToCartContext({
-        _id: productId,
+        id: productId,
         title,
         description,
         price,
@@ -74,12 +74,12 @@ const Products = ({ products }: Props) => {
   };
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 p-4 sm:p-6">
-      {products.map((product: ProductType) => {
+      {products.map((product: ProductType, index) => {
         const {
           category,
           description,
           image,
-          _id,
+          id,
           isNew,
           oldPrice,
           price,
@@ -88,7 +88,7 @@ const Products = ({ products }: Props) => {
 
         return (
           <Card
-            key={_id}
+            key={index}
             className="flex flex-col justify-between h-full group"
           >
             <CardHeader>
@@ -132,7 +132,7 @@ const Products = ({ products }: Props) => {
                 onClick={() =>
                   user
                     ? handleAddToCart(
-                        _id,
+                        id,
                         title,
                         description,
                         price,
@@ -152,9 +152,9 @@ const Products = ({ products }: Props) => {
                         theme: 'light',
                       })
                 }
-                disabled={loadingProductId === _id}
+                disabled={loadingProductId === id}
               >
-                {loadingProductId === _id ? <Spinner /> : 'Add to cart'}
+                {loadingProductId === id ? <Spinner /> : 'Add to cart'}
               </Button>
             </CardFooter>
           </Card>
