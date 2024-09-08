@@ -16,21 +16,18 @@ export async function POST(request: Request) {
     const result = await addToCart(
       title,
       isNew,
-      oldPrice,
       price,
+      oldPrice,
       description,
       category,
       image,
       userId
     );
-    return NextResponse.json(result);
+    return NextResponse.json(result, { status: 200 });
   } catch (error) {
-    console.error('Error adding item to cart:', error);
     return NextResponse.json(
       { error: 'Failed to add item to cart' },
       { status: 500 }
     );
   }
 }
-
-export const dynamic = 'force-dynamic';
