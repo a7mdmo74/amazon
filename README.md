@@ -37,12 +37,6 @@ Check out the live preview of the project: [https://amazon-a7mdmo74.vercel.app/]
 - `components/` - Reusable React components
 - `lib/` - Utility functions and API helpers
 
-## API Routes
-
-- `/api/products` - Product management
-- `/api/cart` - Shopping cart operations
-- `/api/orders` - Order processing
-
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
