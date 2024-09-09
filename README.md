@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Amazon Clone
+
+This project is an Amazon clone built with modern web technologies, providing a robust e-commerce platform with user authentication, product management, and a responsive user interface.
+
+## Live Preview
+
+Check out the live preview of the project: [https://amazon-a7mdmo74.vercel.app/](https://amazon-a7mdmo74.vercel.app/)
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/) - React framework for server-side rendering and static site generation
+- [React.js](https://reactjs.org/) - JavaScript library for building user interfaces
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [shadcn/ui](https://ui.shadcn.com/) - Re-usable components built with Radix UI and Tailwind CSS
+- [Prisma](https://www.prisma.io/) - Next-generation ORM for Node.js and TypeScript
+- [MongoDB](https://www.mongodb.com/) - NoSQL database for storing application data
+- [Clerk](https://clerk.dev/) - Authentication and user management solution
+
+## Features
+
+- User authentication and account management
+- Product browsing and searching
+- Shopping cart functionality
+- Order processing
+- Responsive design for mobile and desktop
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Set up environment variables (see `.env.example`)
+4. Run the development server: `npm run dev`
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Project Structure
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `pages/` - Next.js pages and API routes
+- `components/` - Reusable React components
+- `lib/` - Utility functions and API helpers
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## API Routes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/api/products` - Product management
+- `/api/cart` - Shopping cart operations
+- `/api/orders` - Order processing
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is open source and available under the [MIT License](LICENSE).
